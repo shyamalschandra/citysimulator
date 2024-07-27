@@ -5,7 +5,7 @@ title: 'Shyamal Chandra''s Sources Cited:'
 
 # Shyamal Chandra's Sources Cited:
 
-# Attributions for all WAV files (renamed ER.wav, fire.wav, police.wav)
+# Attributions for all WAV files (renamed er.wav, fire.wav, police.wav)
 
 Facility Siren (Loopable) by Mr_KeybOred -- https://freesound.org/s/414494/ -- License: Creative Commons 0
 
