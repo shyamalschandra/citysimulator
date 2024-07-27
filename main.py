@@ -6,6 +6,7 @@ import os
 import sys
 import string
 import random
+from playsound import playsound
 
 class Player:
 
@@ -32,6 +33,9 @@ class CityCall:
 # To String function
     def __str__ (self):
         return str("CityCall: " + self.location + " " + self.calltype + " " + str(self.callid) + " ")
+
+    def getType(self):
+        return str(self.calltype)
 
 class city_dispatch_simulator:
 
@@ -92,7 +96,7 @@ def caller_generate_random(typeOfEmergency, callerid):
     location = ["Frontenac", "Pittsburg", "Arma", "Columbus", "Arcadia"]
 
     fire_candidates = ["Home burning", "Car burning", "Shop burning", "People burning"]
-    ER_candidates = ["Old timer sick", "Mortally wounded", "Asthma attack", "First-degree burn"]
+    ER_candidates = ["Old timer sick", "Mortally wounded", "Asthma attack", "First degree burn"]
     police_candidates = ["1st-degree murder","robbery","vandalism","arson"]
 
     unshuffled_number = ['1', '2', '3', '4']
@@ -167,6 +171,19 @@ if __name__ == "__main__":
 
                 #print(testcall)
                 newCall = testcall.get_next_item()
+
+                typeOfCall = newCall.getType()
+
+                #print(typeOfCall)
+
+                if typeOfCall in ["Home burning", "Car burning", "Shop burning", "People burning"]:
+                    playsound("fire.wav")
+                elif typeOfCall in ["Old timer sick", "Mortally wounded", "Asthma attack", "First degree burn"]:
+                    playsound("er.wav")
+                elif typeOfCall in ["1st-degree murder","robbery","vandalism","arson"]:
+                    playsound("police.wav")
+                else:
+                    print("No sound!")
 
                 print(newCall)
 
