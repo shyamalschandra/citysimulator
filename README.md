@@ -8,7 +8,7 @@ Primary Author: Shyamal Suhana Chandra
 
 Team Members: Hema Kanoujia & Bismark Akoto
 
-Goal: A video game to provide a discrete simulation of someone with power in the city to decide whether to randomly choose a solution to a fire, ER, or police ficitious problem in the Kansas areas. 
+Goal: A video game to provide a discrete simulation of someone with power in the city to decide whether to randomly choose a solution to a fire, ER, or police fictious problem in the Kansas areas. 
 
 Before every turn, the user gets a four-choices where they can decide whether he or she will win more time by giving the right choice or lose time by giving the wrong choice.
 
