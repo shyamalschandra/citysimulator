@@ -1,7 +1,11 @@
 # citysimulator
+
 City Queue Simulator
+
 by 
+
 Primary Author: Shyamal Suhana Chandra
+
 Team Members: Hema Kanoujia & Bismark Akoto
 
 Goal: A video game to provide a discrete simulation of someone with power in the city to decide whether to randomly choose a solution to a fire, ER, or police ficitious problem in the Kansas areas. 
