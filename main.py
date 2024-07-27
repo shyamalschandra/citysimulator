@@ -64,25 +64,28 @@ class city_dispatch_simulator:
             return True
 
     def check_if_win(self):
-        if len(self.CallQueue):
+        if len(self.CallQueue) == 0:
             print("Game Over!")
-            return True
+            exit(0)
         else:
             return False
 
     def check_if_time_done(self):
         if self.starting_time == 0:
             print("Time is up!")
-            return True
+            exit(0)
         else:
             return False
 
     def get_next_item(self):
         return self.CallQueue.pop()
 
+    def change_time(self, timeDelta):
+        self.starting_time = self.starting_time + timeDelta
+
 # To String function
     def __str__ (self):
-        return str("" + self.CallQueue + " " + str(self.time) + "")
+        return str("" + str(len(self.CallQueue)) + " cases to go with " + str(self.starting_time) + " on the clock.")
 
 def caller_generate_random(typeOfEmergency, callerid):
 
@@ -101,7 +104,7 @@ def caller_generate_random(typeOfEmergency, callerid):
     choices = {}
 
     for item in range(len(unshuffled_number)):
-        print(item)
+        #print(item)
         choices[str(unshuffled_number[int(item)])] = str(unshuffled_result[int(item)])
 
     solutions = []
@@ -140,8 +143,8 @@ if __name__ == "__main__":
     penalty = 10
     win = 10
 
-    print(dispatch_queue)
-    print(len(dispatch_queue))
+    #print(dispatch_queue)
+    #print(len(dispatch_queue))
 
     testcall = city_dispatch_simulator(dispatch_queue, time_limit)
     end_of_game = False
@@ -156,31 +159,37 @@ if __name__ == "__main__":
 
             for play in all_players:
 
-                print(testcall.CallQueue)
+                end_of_game = testcall.check_if_win()
+                end_of_game = testcall.check_if_time_done()
+
+                if end_of_game:
+                    print('End of game!')
+
+                #print(testcall)
                 newCall = testcall.get_next_item()
 
                 print(newCall)
 
                 next_move = input("Which solution (1, 2, 3, 4)? ")
 
+                while 0 == len(str(next_move)):
+                    print("Not response. Please try again!")
+                    next_move = input("Which solution (1, 2, 3, 4)? ")
+
+
                 if not testcall.is_valid_solutions(int(next_move)):
                     print("Invalid input for solution")
                     exit(0)
 
                 if not testcall.make_move(int(next_move), play.order, newCall.solutions):
-                    print("Bad move")
-                    time_limit = time_limit - penalty
+                    print("Wrong move!")
+                    testcall.change_time( -1 * penalty )
                 else:
-                    print("Good move")
-                    time_limit = time_limit + win
+                    print("Right move!")
+                    testcall.change_time( win )
 
-                testcall.print_queues()
-
-                end_of_game = testcall.check_if_win()
-                end_of_game = testcall.check_if_time_done()
-
-                if end_of_game:
-                    print('End of game!')
+                #testcall.print_queues()
+                print(testcall)
 
         keep_on_playing = input('Keep on playing ([y], n): ')
         if keep_on_playing == 'y':
